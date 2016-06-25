@@ -51,11 +51,18 @@ var wineGlass = new CatalogItem("wineGlass");
 // next steps are going to be getting a few images done, then im going to get the images to display on screen, once I have a couple different images displaying on screen lets start working on a random variable from the index of all pictures.
 // var imgOne = document.getElementById("imgOne");
 function randomImg() {
-  var randOne = allItems.indexOf(Math.ceil(Math.random() * 10));
+  var randOne = Math.floor(Math.random() * allItems.length);
   randArr.push(randOne);
-  var randTwo = Math.ceil(Math.random() * 10);
+  console.log(randOne);
+
+  do {
+    var randTwo = Math.floor(Math.random() * allItems.length);
+  } while (randTwo === randOne);
   randArr.push(randTwo);
-  var randThree = Math.ceil(Math.random() * 10);
+
+  do {
+    var randThree = Math.floor(Math.random() * allItems.length);
+  } while (randThree === randOne && randThree === randTwo);
   randArr.push(randThree);
 }
 
