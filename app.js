@@ -11,6 +11,28 @@ function CatalogItem(name) {
   this.timeShown = 0;
   allItems.push(this);
 }
+
+var pen = new CatalogItem("pen");
+var bubblegum = new CatalogItem("bubblegum");
+var dogDuck = new CatalogItem("dogDuck");
+var pen = new CatalogItem("bag");
+var banana = new CatalogItem("banana");
+var bathroom = new CatalogItem("bathroom");
+var boots = new CatalogItem("boots");
+var breakfast = new CatalogItem("breakfast");
+var chair = new CatalogItem("chair");
+var cthulhu = new CatalogItem("cthulhu");
+var dragon = new CatalogItem("dragon");
+var petSweep = new CatalogItem("petSweep");
+var scissors = new CatalogItem("scissors");
+var shark = new CatalogItem("shark");
+var sweep = new CatalogItem("sweep");
+var tauntaun = new CatalogItem("tauntaun");
+var unicorn = new CatalogItem("unicorn");
+var usb = new CatalogItem("usb");
+var waterCan = new CatalogItem("waterCan");
+var wineGlass = new CatalogItem("wineGlass");
+
 // I want a method that creates a random ? index
 //Do I want the event handler here?
   // CatalogItem.prototype.handleImgClick = function() {
@@ -26,11 +48,17 @@ function CatalogItem(name) {
   // };
 
 // next steps are going to be getting a few images done, then im going to get the images to display on screen, once I have a couple different images displaying on screen lets start working on a random variable from the index of all pictures.
-var imgOne = document.getElementById("imgOne");
-
-function addImages(filepath){
-  imgOne.src = "";
+// var imgOne = document.getElementById("imgOne");
+function randomImg() {
+  Math.ceil(Math.random() * 10);
 }
+
+function addImages(objOne, objTwo, objThree){
+  imgOne.src = objOne;
+  imgTwo.src = objTwo;
+  imgThree.src = objThree;
+}
+
 // function addImages(filepath) {
 //   var image = document.createElement("div");
 //   var insertImage = document.createElement("img");
@@ -42,12 +70,10 @@ function addImages(filepath){
 
 // .id or .class or .src
 
-addImages(pen);
+addImages(pen.filepath, bubblegum.filepath, dogDuck.filepath);
 
-var pen = new CatalogItem("pen");
-var bubblegum = new CatalogItem("bubblegum");
-var dogDuck = new CatalogItem("dogDuck");
 
+console.log(addImages);
 
 
 //Is this the correct way to path an image ^ ********
