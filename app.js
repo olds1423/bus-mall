@@ -2,6 +2,7 @@
 var totalNumClicks = 14;
 var actualClicks = 0;
 var allItems = [];
+var randArr = [];
 
 function CatalogItem(name) {
   this.name = name;
@@ -50,7 +51,12 @@ var wineGlass = new CatalogItem("wineGlass");
 // next steps are going to be getting a few images done, then im going to get the images to display on screen, once I have a couple different images displaying on screen lets start working on a random variable from the index of all pictures.
 // var imgOne = document.getElementById("imgOne");
 function randomImg() {
-  Math.ceil(Math.random() * 10);
+  var randOne = allItems.indexOf(Math.ceil(Math.random() * 10));
+  randArr.push(randOne);
+  var randTwo = Math.ceil(Math.random() * 10);
+  randArr.push(randTwo);
+  var randThree = Math.ceil(Math.random() * 10);
+  randArr.push(randThree);
 }
 
 function addImages(objOne, objTwo, objThree){
@@ -71,10 +77,11 @@ function addImages(objOne, objTwo, objThree){
 // .id or .class or .src
 
 addImages(pen.filepath, bubblegum.filepath, dogDuck.filepath);
-
+randomImg();
 
 console.log(addImages);
 
+// I need the property of an index in allItems
 
 //Is this the correct way to path an image ^ ********
 // div.appendChild(imgOne);
