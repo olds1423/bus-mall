@@ -30,7 +30,7 @@ var pen = new CatalogItem("pen", "img/pen.png");
 div.appendChild(imgOne);
 //can I put the append child inside of the construtor ? *********
 
-handleImgClick.catalogItem();
+// handleImgClick.catalogItem();
 
 // event handler on click
 
