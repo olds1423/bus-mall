@@ -3,6 +3,10 @@ var totalNumClicks = 14;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
+var clickImgOne = document.getElementById("imgOne");
+var clickImgTwo = document.getElementById("imgTwo");
+var clickImgThree = document.getElementById("imgThree");
+
 
 function CatalogItem(name) {
   this.name = name;
@@ -52,25 +56,30 @@ var wineGlass = new CatalogItem("wineGlass");
 // var imgOne = document.getElementById("imgOne");
 function randomImg() {
   var randOne = Math.floor(Math.random() * allItems.length);
+  var randTwo;
+  var randThree;
   randArr.push(randOne);
-  console.log(randOne);
 
   do {
-    var randTwo = Math.floor(Math.random() * allItems.length);
+    randTwo = Math.floor(Math.random() * allItems.length);
   } while (randTwo === randOne);
   randArr.push(randTwo);
 
   do {
-    var randThree = Math.floor(Math.random() * allItems.length);
-  } while (randThree === randOne && randThree === randTwo);
+    randThree = Math.floor(Math.random() * allItems.length);
+  } while (randOne === randThree || randTwo === randThree);
   randArr.push(randThree);
 }
 
-function addImages(objOne, objTwo, objThree){
-  imgOne.src = objOne;
-  imgTwo.src = objTwo;
-  imgThree.src = objThree;
+function addImages(indexOne, indexTwo, indexThree){
+  imgOne.src = allItems[indexOne].filepath;
+  imgOne.name = allItems[indexOne].name;
+  // I am setting the image source equal to an allItem index passed in as a parameter and then drilling down to its element with .filepath
+  imgTwo.src = allItems[indexTwo].filepath;
+  // I need the property of an index in allItems
+  imgThree.src = allItems[indexThree].filepath;
 }
+
 
 // function addImages(filepath) {
 //   var image = document.createElement("div");
@@ -82,13 +91,24 @@ function addImages(objOne, objTwo, objThree){
 // }
 
 // .id or .class or .src
-
-addImages(pen.filepath, bubblegum.filepath, dogDuck.filepath);
 randomImg();
+addImages(randArr[0], randArr[1], randArr[2]);
+console.log(randArr);
 
-console.log(addImages);
 
-// I need the property of an index in allItems
+
+function handleImgClick(event){
+  event.preventDefault();
+  randArr = [];
+  randomImg();
+  addImages(randArr[0], randArr[1], randArr[2]);
+}
+
+clickImgOne.addEventListener("click", handleImgClick);
+clickImgTwo.addEventListener("click", handleImgClick);
+clickImgThree.addEventListener("click", handleImgClick);
+
+
 
 //Is this the correct way to path an image ^ ********
 // div.appendChild(imgOne);
