@@ -82,22 +82,10 @@ function addImages(indexOne, indexTwo, indexThree){
   imgThree.name = allItems[indexThree].name;
 }
 
-
-// function addImages(filepath) {
-//   var image = document.createElement("div");
-//   var insertImage = document.createElement("img");
-//   imagesElement.appendChild(image);
-//   insertImage.src = this.filepath
-  // pull only one and get the filepath property and change that into the HTML, got back to using IDs with a classed section of the total - using img.src or something similar top change the filepath
-  // image.appendChild(insertImage);
-// }
-
 // .id or .class or .src
 randomImg();
 addImages(randArr[0], randArr[1], randArr[2]);
 console.log(randArr);
-
-
 
 function handleImgClick(event){
   event.preventDefault();
@@ -112,9 +100,7 @@ clickImgThree.addEventListener("click", handleImgClick);
 
 
 
-//Is this the correct way to path an image ^ ********
 // div.appendChild(imgOne);
-//can I put the append child inside of the construtor ? *********
 
 // handleImgClick.catalogItem();
 
