@@ -1,5 +1,5 @@
 // Lets crush this!
-var totalNumClicks = 14;
+var totalNumClicks = 15;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
@@ -82,10 +82,17 @@ addImages(randArr[0], randArr[1], randArr[2]);
 console.log(randArr);
 
 function handleImgClick(event){
-  event.preventDefault();
-  randArr = [];
-  randomImg();
-  addImages(randArr[0], randArr[1], randArr[2]);
+//I think I want to wrap this in a for loop
+  if (actualClicks === totalNumClicks){
+    // show me a new button that displays results
+    alert("Yay");
+  } else {
+    event.preventDefault();
+    randArr = [];
+    randomImg();
+    addImages(randArr[0], randArr[1], randArr[2]);
+    actualClicks++;
+  }
 }
 
 clickImgOne.addEventListener("click", handleImgClick);
