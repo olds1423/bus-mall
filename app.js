@@ -1,5 +1,5 @@
 // Lets crush this!
-var totalNumClicks = 15;
+var totalNumClicks = 1;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
@@ -39,9 +39,8 @@ var waterCan = new CatalogItem("waterCan");
 var wineGlass = new CatalogItem("wineGlass");
 
 //below I will create my tracker, it will have an empty array for the votes per name
-var tracker = {
+// maybe instead of a tracker,a  helper function?
 
-}
 // next steps are going to be getting a few images done, then im going to get the images to display on screen, once I have a couple different images displaying on screen lets start working on a random variable from the index of all pictures.
 // var imgOne = document.getElementById("imgOne");
 function randomImg() {
@@ -64,6 +63,7 @@ function randomImg() {
 function addImages(indexOne, indexTwo, indexThree){
   imgOne.src = allItems[indexOne].filepath;
   imgOne.name = allItems[indexOne].name;
+  imgOne.numClicks = allItems[indexOne].numClicks;
   imgOne.timeShown = allItems[indexOne].timeShown += 1;
   // I am setting the image source equal to an allItem index passed in as a parameter and then drilling down to its element with .filepath
   imgTwo.src = allItems[indexTwo].filepath;
@@ -81,10 +81,16 @@ randomImg();
 addImages(randArr[0], randArr[1], randArr[2]);
 console.log(randArr);
 
+
 function handleImgClick(event){
 //I think I want to wrap this in a for loop
   if (actualClicks === totalNumClicks){
     // show me a new button that displays results
+    var voteButtonArea = document.getElementById("displayVotesArea");
+    var voteButton = document.createElement("p");
+    voteButton.id = "voteButton";
+    voteButton.textContent = "Click here for results";
+    voteButtonArea.appendChild(voteButton);
     alert("Yay");
   } else {
     event.preventDefault();
@@ -92,6 +98,7 @@ function handleImgClick(event){
     randomImg();
     addImages(randArr[0], randArr[1], randArr[2]);
     actualClicks++;
+    // voteThis()
   }
 }
 
