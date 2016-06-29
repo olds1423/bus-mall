@@ -9,6 +9,7 @@ body {
 
 main {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -28,7 +29,15 @@ h2 {
   width: 100%;
 }
 
-#displayVotesArea {
-  display: block;
+#imgDisplay {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#voteButton {
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 30px;
   background-color: blue;
 }
