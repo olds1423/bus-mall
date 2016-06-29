@@ -10,12 +10,14 @@ body {
 main {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 }
 
 section {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 900px;
   height:250px;
@@ -25,4 +27,17 @@ h2 {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+#imgDisplay {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#voteButton {
+  display: flex;
+  align-items: center;
+  width: 140px;
+  height: 30px;
+  background-color: blue;
 }

@@ -1,5 +1,5 @@
 // Lets crush this!
-var totalNumClicks = 14;
+var totalNumClicks = 1;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
@@ -38,19 +38,8 @@ var usb = new CatalogItem("usb");
 var waterCan = new CatalogItem("waterCan");
 var wineGlass = new CatalogItem("wineGlass");
 
-// I want a method that creates a random ? index
-//Do I want the event handler here?
-  // CatalogItem.prototype.handleImgClick = function() {
-  //   for (var i = 0; i < totalNumClicks; i++) {
-  //     // button event listener for image clicks?
-  //     button.addEventListener("click", handleImgClick);
-  //     alert("Work");
-  //     // ranomize?
-  //     // create a button and insert it into the html
-  //     // handle review answer button click
-  //   }
-  //
-  // };
+//below I will create my tracker, it will have an empty array for the votes per name
+// maybe instead of a tracker,a  helper function?
 
 // next steps are going to be getting a few images done, then im going to get the images to display on screen, once I have a couple different images displaying on screen lets start working on a random variable from the index of all pictures.
 // var imgOne = document.getElementById("imgOne");
@@ -74,23 +63,18 @@ function randomImg() {
 function addImages(indexOne, indexTwo, indexThree){
   imgOne.src = allItems[indexOne].filepath;
   imgOne.name = allItems[indexOne].name;
+  imgOne.numClicks = allItems[indexOne].numClicks;
+  imgOne.timeShown = allItems[indexOne].timeShown += 1;
   // I am setting the image source equal to an allItem index passed in as a parameter and then drilling down to its element with .filepath
   imgTwo.src = allItems[indexTwo].filepath;
   imgTwo.name = allItems[indexTwo].name;
+  imgTwo.timeShown = allItems[indexTwo].timeShown += 1;
+
   // I need the property of an index in allItems
   imgThree.src = allItems[indexThree].filepath;
   imgThree.name = allItems[indexThree].name;
+  imgThree.timeShown = allItems[indexThree].timeShown += 1;
 }
-
-
-// function addImages(filepath) {
-//   var image = document.createElement("div");
-//   var insertImage = document.createElement("img");
-//   imagesElement.appendChild(image);
-//   insertImage.src = this.filepath
-  // pull only one and get the filepath property and change that into the HTML, got back to using IDs with a classed section of the total - using img.src or something similar top change the filepath
-  // image.appendChild(insertImage);
-// }
 
 // .id or .class or .src
 randomImg();
@@ -98,12 +82,24 @@ addImages(randArr[0], randArr[1], randArr[2]);
 console.log(randArr);
 
 
-
 function handleImgClick(event){
-  event.preventDefault();
-  randArr = [];
-  randomImg();
-  addImages(randArr[0], randArr[1], randArr[2]);
+//I think I want to wrap this in a for loop
+  if (actualClicks === totalNumClicks){
+    // show me a new button that displays results
+    var voteButtonArea = document.getElementById("displayVotesArea");
+    var voteButton = document.createElement("p");
+    voteButton.id = "voteButton";
+    voteButton.textContent = "Click here for results";
+    voteButtonArea.appendChild(voteButton);
+    alert("Yay");
+  } else {
+    event.preventDefault();
+    randArr = [];
+    randomImg();
+    addImages(randArr[0], randArr[1], randArr[2]);
+    actualClicks++;
+    // voteThis()
+  }
 }
 
 clickImgOne.addEventListener("click", handleImgClick);
@@ -112,9 +108,7 @@ clickImgThree.addEventListener("click", handleImgClick);
 
 
 
-//Is this the correct way to path an image ^ ********
 // div.appendChild(imgOne);
-//can I put the append child inside of the construtor ? *********
 
 // handleImgClick.catalogItem();
 
