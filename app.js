@@ -76,8 +76,10 @@ function addImages(indexOne, indexTwo, indexThree){
   imgOne.name = allItems[indexOne].name;
   // I am setting the image source equal to an allItem index passed in as a parameter and then drilling down to its element with .filepath
   imgTwo.src = allItems[indexTwo].filepath;
+  imgTwo.name = allItems[indexTwo].name;
   // I need the property of an index in allItems
   imgThree.src = allItems[indexThree].filepath;
+  imgThree.name = allItems[indexThree].name;
 }
 
 
