@@ -1,5 +1,5 @@
 // Lets crush this!
-var totalNumClicks = 1;
+var totalNumClicks = 14;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
@@ -20,7 +20,7 @@ function CatalogItem(name) {
 var pen = new CatalogItem("pen");
 var bubblegum = new CatalogItem("bubblegum");
 var dogDuck = new CatalogItem("dogDuck");
-var pen = new CatalogItem("bag");
+var bag = new CatalogItem("bag");
 var banana = new CatalogItem("banana");
 var bathroom = new CatalogItem("bathroom");
 var boots = new CatalogItem("boots");
@@ -76,29 +76,35 @@ function addImages(indexOne, indexTwo, indexThree){
   imgThree.timeShown = allItems[indexThree].timeShown += 1;
 }
 
-// .id or .class or .src
-randomImg();
-addImages(randArr[0], randArr[1], randArr[2]);
-console.log(randArr);
 
+function addVote(x){
+  for (var i = 0; i < allItems.length; i++) {
+    if (allItems[i].name === x) {
+      allItems[i].numClicks++;
+    }
+  }
+}
 
 function handleImgClick(event){
 //I think I want to wrap this in a for loop
-  if (actualClicks === totalNumClicks){
+  if (actualClicks !== totalNumClicks){
+    event.preventDefault();
+    randArr = [];
+    var clickedName = event.target.name;
+    addVote(clickedName);
+    randomImg();
+    addImages(randArr[0], randArr[1], randArr[2]);
+    actualClicks++;
+    // voteThis()
+    // below is what im adding as we review wills code
+  } else {
     // show me a new button that displays results
+    event.preventDefault();
     var voteButtonArea = document.getElementById("displayVotesArea");
     var voteButton = document.createElement("p");
     voteButton.id = "voteButton";
     voteButton.textContent = "Click here for results";
     voteButtonArea.appendChild(voteButton);
-    alert("Yay");
-  } else {
-    event.preventDefault();
-    randArr = [];
-    randomImg();
-    addImages(randArr[0], randArr[1], randArr[2]);
-    actualClicks++;
-    // voteThis()
   }
 }
 
@@ -106,7 +112,11 @@ clickImgOne.addEventListener("click", handleImgClick);
 clickImgTwo.addEventListener("click", handleImgClick);
 clickImgThree.addEventListener("click", handleImgClick);
 
-
+//**why is it adding the vote to the next item instatiated?
+// .id or .class or .src
+randomImg();
+addImages(randArr[0], randArr[1], randArr[2]);
+console.log(randArr);
 
 // div.appendChild(imgOne);
 
