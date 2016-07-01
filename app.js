@@ -1,12 +1,12 @@
 // Lets crush this!
-var totalNumClicks = 3;
+var totalNumClicks = 14;
 var actualClicks = 0;
 var allItems = [];
 var randArr = [];
 var clickImgOne = document.getElementById("imgOne");
 var clickImgTwo = document.getElementById("imgTwo");
 var clickImgThree = document.getElementById("imgThree");
-var dumbIdea = null;
+var voteButton = document.getElementById("voteButton");
 
 
 function CatalogItem(name) {
@@ -91,7 +91,7 @@ var tracker = {
 
   handleImgClick: function(event){
   //I think I want to wrap this in a for loop
-    if (actualClicks !== totalNumClicks){
+    do {
       event.preventDefault();
       randArr = [];
       var clickedName = event.target.name;
@@ -101,34 +101,45 @@ var tracker = {
       actualClicks++;
     // voteThis()
     // below is what im adding as we review wills code
-    } else {
+    } while (actualClicks !== totalNumClicks)
     // show me a new button that displays results
-      event.preventDefault();
-      var voteButtonArea = document.getElementById("displayVotesArea");
-      var voteButton = document.createElement("p");
-      voteButton.id = "voteButton";
-      voteButton.textContent = "Click here for results";
-      voteButtonArea.appendChild(voteButton);
-      var displayResultsButton = document.getElementById("voteButton");
-      dumbIdea.push(displayResultsButton);
-    }
+      // event.preventDefault();
+      // console.log("wat");
+      // // var voteButtonArea = document.getElementById("displayVotesArea");
+      // var voteButton = document.createElement("p");
+      // voteButton.id = "voteButton";
+      // voteButton.textContent = "Click here for results";
+      // voteButtonArea.appendChild(voteButton);
+      // var displayResultsButton = document.getElementById("voteButton");
   },
 
-  displayResults: function(event) {
-    for (var i = 0; i < allItems[i].length; i++) {
-      var resultsArea = document.getElementById("displayVotesArea");
-      var createRow = document.createElement("li");
-      createRow.textContent = allItems[i].name + allItems[i].numClicks;
-      resultsArea.appendChild(createRow);
-    }
-  }
+  // displayResults: function(event){
+  //   do {
+  //     for (var i = 0; i < allItems[i].length; i++) {
+  //       var resultsArea = document.getElementById("displayVotesArea");
+  //       var createRow = document.createElement("li");
+  //       createRow.appendChild(document.createTextNode("Please"));
+  //       resultsArea.appendChild(createRow);
+  //     }
+  //   } while (totalNumClicks === numClicks);
+  // }
 };
 
 clickImgOne.addEventListener("click", tracker.handleImgClick);
 clickImgTwo.addEventListener("click", tracker.handleImgClick);
 clickImgThree.addEventListener("click", tracker.handleImgClick);
 
-// dumbIdea.addEventListener("click", displayResults);
+voteButton.addEventListener("click", tracker.displayResults);
+// if (actualClicks === totalNumClicks) {
+//   var voteButtonArea = document.getElementById("displayVotesArea");
+//   var voteButton = document.createElement("p");
+//   voteButton.id = "voteButton";
+//   voteButton.textContent = "Click here for results";
+//   voteButtonArea.appendChild(voteButton);
+//   var displayResultsButton = document.getElementById("voteButton")
+// }
+// voteButtonArea.child.addEventListener("click", tracker.displayResults);
+
 // var displayResultsButton = document.getElementById("voteButton");
 //
 // displayResultsButton.addEventListener("click", displayResults);
